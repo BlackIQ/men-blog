@@ -7,6 +7,15 @@ fs.readFile('./learns/docs/blog1.txt', (error, data) => {
 });
 
 // Write File
+fs.writeFile('./learns/docs/blog1.txt', 'hello!', (error) => {
+    if (error) console.log(error);
+    else console.log('Done!');
+});
+
+fs.writeFile('./learns/docs/blog2.txt', 'hello!', (error) => {
+    if (error) console.log(error);
+    else console.log('Done!');
+});
 
 // Delete File
 
