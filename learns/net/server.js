@@ -2,6 +2,8 @@ const http = require('http');
 const fs = require('fs');
 
 const server = http.createServer((req, res) => {
+    res.setHeader('Content-Type', 'text/html');
+
     let path = './learns/net/views/';
 
     switch (req.url) {
