@@ -18,6 +18,10 @@ fs.writeFile('./learns/docs/blog2.txt', 'hello!', (error) => {
 });
 
 // Delete File
+fs.unlink('./learns/docs/blog2.txt', (error) => {
+    if (error) console.log(error);
+    else console.log('Deleted!');
+});
 
 // Directories
 fs.mkdir('./assets', (error) => {
