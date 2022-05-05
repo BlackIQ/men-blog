@@ -24,3 +24,10 @@ fs.mkdir('./assets', (error) => {
     if (error) console.log(error);
     else console.log('Created!');
 });
+
+if (!fs.existsSync('./assets')) {
+    fs.mkdir('./assets', (error) => {
+        if (error) console.log(error);
+        else console.log('Created!');
+    });
+}
