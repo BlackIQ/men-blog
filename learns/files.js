@@ -20,3 +20,7 @@ fs.writeFile('./learns/docs/blog2.txt', 'hello!', (error) => {
 // Delete File
 
 // Directories
+fs.mkdir('./assets', (error) => {
+    if (error) console.log(error);
+    else console.log('Created!');
+});
