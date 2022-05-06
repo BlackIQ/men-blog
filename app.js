@@ -47,6 +47,16 @@ app.get('/get-blogs', (req, res) => {
         });
 });
 
+app.get('/get-single', (req, res) => {
+    Blog.findById('6274fa45375c1673d3560d53')
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((error) => {
+            res.send(error);
+        })
+});
+
 app.get('/', (req, res) => {
     const blogs = [
         {title: 'Hello', body: 'Hey man!'},
