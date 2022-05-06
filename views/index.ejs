@@ -5,10 +5,8 @@
 </head>
 <body>
     <%- include('./partials/nav.ejs') %>
-    <h1>Index</h1>
-    <p>Lorem!</p>
     <br/>
-
+    
     <% if (blogs.length > 0) { %>
         <% blogs.forEach(blog => { %>
             <h3><%= blog.title %></h3>
