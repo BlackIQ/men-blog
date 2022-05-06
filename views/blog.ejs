@@ -8,7 +8,24 @@
     <div>
         <h1><%= blog.title %> </h1>
         <p><%= blog.body %> </p>
+        <hr/>
+        <a class="delete" data-doc="<%= blog.id %>">Delete</a>
     </div>
     <%- include('./partials/footer.ejs') %>
+
+    <script>
+        const trash = document.querySelector('a.delete');
+
+        trash.addEventListener('click', (e) => {
+            const endpoint = `/blogs/${trash.dataset.doc}`;
+            
+            fetch(endpoint, {
+                method: 'DELETE',
+            })
+            .then((response) => response.json())
+            .then((data) => window.location.href = data.redirect)
+            .catch(error => console.log(error));
+        });
+    </script>
 </body>
 </html>
