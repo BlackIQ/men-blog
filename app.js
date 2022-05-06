@@ -44,6 +44,19 @@ app.get('/blogs', (req, res) => {
         });
 });
 
+app.get('/blogs/:id', (req, res) => {
+    Blog.findById(req.params.id)
+        .then((result) => {
+            res.render('blog', {
+                title: result.title,
+                blog: result
+            })
+        })
+        .catch((error) => {
+            res.send(error);
+        });
+})
+
 app.get('/blogs/create', (req, res) => {
     res.render('create', {
         title: 'Create'
