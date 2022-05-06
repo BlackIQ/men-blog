@@ -77,10 +77,11 @@ textarea  {
     cursor: pointer;
 }
 .blog-item  {
-    border: solid 1px #222;
     padding: 1rem;
-    border-radius: 0.5rem;
     margin-bottom: 1rem;
+}
+.blog-item:hover {
+    border-left: solid 5px #222;
 }
 .delete {
     color: red;

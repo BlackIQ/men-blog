@@ -73,7 +73,7 @@ app.get('/blogs/:id', (req, res) => {
             res.render('blog', {
                 title: result.title,
                 blog: result
-            })
+            });
         })
         .catch((error) => {
             res.send(error);
