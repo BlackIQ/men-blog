@@ -58,22 +58,26 @@ app.get('/get-single', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    const blogs = [
-        {title: 'Hello', body: 'Hey man!'},
-        {title: 'Hello', body: 'Hey man!'},
-        {title: 'Hello', body: 'Hey man!'}
-    ];
-
-    res.render('index', {
-        title: 'Home',
-        blogs: blogs
-    });
+    res.redirect('/blogs');
 });
 
 app.get('/about', (req, res) => {
     res.render('about', {
         title: 'About'
     });
+});
+
+app.get('/blogs', (req, res) => {
+    Blog.find()
+        .then((result) => {
+            res.render('index', {
+                title: 'Blogs',
+                blogs: result
+            });
+        })
+        .catch((error) => {
+            res.send(error);
+        });
 });
 
 app.get('/blogs/create', (req, res) => {
