@@ -2,6 +2,9 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 
+// Modules
+const Blog = require('./modules/blog');
+
 // Express App
 const app = express();
 
@@ -17,6 +20,22 @@ app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
 app.use(morgan('dev'));
+
+app.get('/add-blog', (req, res) => {
+    const blog = new Blog({
+        title: 'Title',
+        snippet: 'First',
+        body: 'Hello Gangs!'
+    });
+
+    blog.save()
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((error) => {
+            res.send(error);
+        });
+});
 
 app.get('/', (req, res) => {
     const blogs = [
