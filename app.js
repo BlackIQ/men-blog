@@ -55,7 +55,15 @@ app.get('/blogs/:id', (req, res) => {
         .catch((error) => {
             res.send(error);
         });
-})
+});
+
+app.put('/blogs/:id', (req, res) => {
+
+});
+
+app.delete('/blogs/:id', (req, res) => {
+
+});
 
 app.get('/blogs/create', (req, res) => {
     res.render('create', {
@@ -63,12 +71,12 @@ app.get('/blogs/create', (req, res) => {
     });
 });
 
-app.get('/panel', (req, res) => {
-    res.redirect('/');
+app.post('/blogs/create', (req, res) => {
+
 });
 
 app.use((req, res) => {
     res.status(404).render('404', {
         title: '404'
     });
-})
+});
