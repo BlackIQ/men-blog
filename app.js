@@ -18,6 +18,7 @@ mongoose.connect(dbURI)
 
 app.set('view engine', 'ejs');
 
+app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.use(morgan('dev'));
 
@@ -29,6 +30,28 @@ app.get('/about', (req, res) => {
     res.render('about', {
         title: 'About'
     });
+});
+
+app.get('/blogs/create', (req, res) => {
+    res.render('create', {
+        title: 'Create'
+    });
+});
+
+app.post('/blogs/create', (req, res) => {
+    const blog = new Blog({
+        title: req.body.title,
+        snippet: req.body.snippet,
+        body: req.body.body
+    });
+
+    blog.save()
+        .then((result) => {
+            res.redirect('/blogs');
+        })
+        .catch((error) => {
+            res.send(error);
+        });
 });
 
 app.get('/blogs', (req, res) => {
@@ -62,16 +85,6 @@ app.put('/blogs/:id', (req, res) => {
 });
 
 app.delete('/blogs/:id', (req, res) => {
-
-});
-
-app.get('/blogs/create', (req, res) => {
-    res.render('create', {
-        title: 'Create'
-    });
-});
-
-app.post('/blogs/create', (req, res) => {
 
 });
 
