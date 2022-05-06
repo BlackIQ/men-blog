@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 // Modules
 const Blog = require('./modules/blog');
+const { eq } = require('lodash');
 
 // Express App
 const app = express();
@@ -103,6 +104,20 @@ app.get('/blogs/:id/edit', (req, res) => {
         .catch((error) => {
             res.send(error);
         });
+});
+
+app.post('/blogs/:id/edit', (req, res) => {
+    Blog.findOneAndUpdate({id: req.params.id}, {
+        title: req.body.title,
+        snippet: req.body.snippet,
+        body: req.body.body
+    }, (error, result) => {
+        if (error) {
+            res.send(error);
+        } else {
+            res.redirect('/blogs/' + result.id);
+        }
+    })
 });
 
 app.use((req, res) => {
