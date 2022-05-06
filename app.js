@@ -17,4 +17,8 @@ app.get('/about', (req, res) => {
 
 app.get('/panel', (req, res) => {
     res.redirect('/');
+});
+
+app.use((req, res) => {
+    res.sendFile('./views/404.html', {root: __dirname});
 })
