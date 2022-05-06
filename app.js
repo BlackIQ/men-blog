@@ -85,7 +85,15 @@ app.put('/blogs/:id', (req, res) => {
 });
 
 app.delete('/blogs/:id', (req, res) => {
-
+    Blog.findByIdAndDelete(req.params.id)
+        .then((result) => {
+            res.json({
+                redirect: '/blogs'
+            });
+        })
+        .catch((error) => {
+            res.send(error);
+        });
 });
 
 app.use((req, res) => {
