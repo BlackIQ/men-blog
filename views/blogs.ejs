@@ -8,7 +8,7 @@
     <% if (blogs.length > 0) { %>
         <% blogs.forEach(blog => { %>
             <div class="blog-item">
-                <h3><%= blog.title %></h3>
+                <h3><a href="/blogs/<%= blog.id %> "><%= blog.title %></a></h3>
                 <p><%= blog.body %></p>
             </div>
         <% }); %>
