@@ -80,15 +80,24 @@ app.get('/blogs/:id', (req, res) => {
         });
 });
 
-app.put('/blogs/:id', (req, res) => {
-
-});
-
 app.delete('/blogs/:id', (req, res) => {
     Blog.findByIdAndDelete(req.params.id)
         .then((result) => {
             res.json({
                 redirect: '/blogs'
+            });
+        })
+        .catch((error) => {
+            res.send(error);
+        });
+});
+
+app.get('/blogs/:id/edit', (req, res) => {
+    Blog.findById(req.params.id)
+        .then((result) => {
+            res.render('update', {
+                title: result.title,
+                blog: result
             });
         })
         .catch((error) => {
