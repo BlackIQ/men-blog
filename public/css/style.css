@@ -82,3 +82,7 @@ textarea  {
     border-radius: 0.5rem;
     margin-bottom: 1rem;
 }
+.delete {
+    color: red;
+    cursor: pointer;
+}
