@@ -7,17 +7,28 @@ app.set('view engine', 'ejs');
 app.listen(3000);
 
 app.get('/', (req, res) => {
+    const blogs = [
+        {title: 'Hello', body: 'Hey man!'},
+        {title: 'Hello', body: 'Hey man!'},
+        {title: 'Hello', body: 'Hey man!'}
+    ];
+
     res.render('index', {
-        title: 'Home'
+        title: 'Home',
+        blogs: blogs
     });
 });
 
 app.get('/about', (req, res) => {
-    res.render('about');
+    res.render('about', {
+        title: 'About'
+    });
 });
 
 app.get('/blogs/create', (req, res) => {
-    res.render('create');
+    res.render('create', {
+        title: 'Create'
+    });
 });
 
 app.get('/panel', (req, res) => {
@@ -25,5 +36,7 @@ app.get('/panel', (req, res) => {
 });
 
 app.use((req, res) => {
-    res.status(404).render('404');
+    res.status(404).render('404', {
+        title: '404'
+    });
 })
