@@ -37,6 +37,16 @@ app.get('/add-blog', (req, res) => {
         });
 });
 
+app.get('/get-blogs', (req, res) => {
+    Blog.find()
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((error) => {
+            res.send(error);
+        });
+});
+
 app.get('/', (req, res) => {
     const blogs = [
         {title: 'Hello', body: 'Hey man!'},
