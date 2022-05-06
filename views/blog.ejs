@@ -6,10 +6,13 @@
 <body>
     <%- include('./partials/nav.ejs') %>
     <div>
-        <h1><%= blog.title %> </h1>
-        <p><%= blog.body %> </p>
+        <h1><%= blog.title %></h1>
+        <p><%= blog.body %></p>
         <hr/>
-        <a class="delete" data-doc="<%= blog.id %>">Delete</a>
+        <p>
+            <a class="delete" data-doc="<%= blog.id %>">Delete</a>
+            <a class="edit" href="/blogs/<%= blog.id %>/edit">Edit</a>
+        </p>
     </div>
     <%- include('./partials/footer.ejs') %>
 
